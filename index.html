@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz San Valentín</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f0e3;
+        }
+        .container {
+            position: relative;
+            cursor: pointer;
+        }
+        .carta, .muñequito {
+            width: 300px;
+            transition: opacity 0.5s ease-in-out;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .muñequito {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" onclick="toggleCarta()">
+        <img id="cartaCerrada" class="carta" src="carta-cerrada.gif" alt="Carta Cerrada">
+        <img id="muñequito" class="muñequito" src="carta-abierta.gif" alt="Muñequito Animado">
+    </div>
+    
+    <script>
+        let cartaAbierta = false;
+
+        function toggleCarta() {
+            cartaAbierta = !cartaAbierta;
+            document.getElementById('cartaCerrada').style.opacity = cartaAbierta ? '0' : '1';
+            document.getElementById('muñequito').style.opacity = cartaAbierta ? '1' : '0';
+        }
+    </script>
+</body>
+</html>
