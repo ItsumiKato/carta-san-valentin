@@ -10,18 +10,25 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            width: 100vw;
+            margin: 0;
+            overflow: hidden;
             background-color: #f8f0e3;
         }
         .container {
             position: relative;
+            width: 100vw;
+            height: 100vh;
             cursor: pointer;
         }
         .carta, .muñequito {
-            width: 300px;
-            transition: opacity 0.5s ease-in-out;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
             position: absolute;
             top: 0;
             left: 0;
+            transition: opacity 0.5s ease-in-out;
         }
         .muñequito {
             opacity: 0;
@@ -29,6 +36,10 @@
     </style>
 </head>
 <body>
+    <audio id="musicaFondo" loop>
+        <source src="musica.mp3" type="audio/mpeg">
+    </audio>
+    
     <div class="container" onclick="toggleCarta()">
         <img id="cartaCerrada" class="carta" src="carta-cerrada.gif" alt="Carta Cerrada">
         <img id="muñequito" class="muñequito" src="carta-abierta.gif" alt="Muñequito Animado">
@@ -36,11 +47,19 @@
     
     <script>
         let cartaAbierta = false;
+        let musica = document.getElementById('musicaFondo');
 
         function toggleCarta() {
             cartaAbierta = !cartaAbierta;
             document.getElementById('cartaCerrada').style.opacity = cartaAbierta ? '0' : '1';
             document.getElementById('muñequito').style.opacity = cartaAbierta ? '1' : '0';
+            
+            if (cartaAbierta) {
+                musica.play(); // Reproducir música
+            } else {
+                musica.pause(); // Pausar música
+                musica.currentTime = 0; // Reiniciar al inicio
+            }
         }
     </script>
 </body>
