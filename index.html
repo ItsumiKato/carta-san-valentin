@@ -20,14 +20,15 @@
             width: 100vw;
             height: 100vh;
             cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .carta, .muñequito {
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
             position: absolute;
-            top: 0;
-            left: 0;
             transition: opacity 0.5s ease-in-out;
         }
         .muñequito {
